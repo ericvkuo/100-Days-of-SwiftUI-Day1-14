@@ -56,7 +56,7 @@ print(r.length)
 
 //second practice
 
-class Employee {
+class Employee { // parent class
     var hours: Int {
         didSet {
             print("Welcome to the company!")
@@ -71,7 +71,7 @@ class Employee {
     }
 }
 
-class Developer: Employee {
+class Developer: Employee { //subclass inherits from Employee parent class
     func work (){
         print("I'm writing code for \(hours) hours.")
     }
@@ -80,7 +80,8 @@ class Developer: Employee {
     }
 }
 
-class Manager: Employee {
+final class Manager: Employee { //subclass inherits from Employee parent class
+    // final keyword means you couldn't make an subclass from this class
     let age: Int
     
     init(hours:Int, age: Int){
@@ -97,3 +98,28 @@ let joseph = Manager(hours: 10, age: 50)
 robert.work()
 joseph.work()
 robert.printSummary()
+
+class User {
+    let id: Int
+
+    init(id: Int) {
+        self.id = id
+        print("User \(id): I'm alive!")
+    }
+
+    deinit {
+        print("User \(id): I'm dead!")
+    }
+}
+
+var users = [User]()
+
+for i in 1...3 {
+    let user = User(id: i)
+    print("User \(user.id): I'm in control!")
+    users.append(user)
+}
+
+print("Loop is finished!")
+users.removeAll()
+print("Array is clear!")
