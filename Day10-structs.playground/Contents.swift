@@ -17,8 +17,9 @@ red.printSummary()
 struct Employee {
     let name: String
     var vacationRemaing: Int
-    
-    mutating func takeVacation(days: Int) {
+
+
+    mutating func takeVacation(outside days: Int) {
         if vacationRemaing > days {
             vacationRemaing -= days
             print("I'm going on vacation!")
@@ -30,7 +31,7 @@ struct Employee {
 }
 
 var archer = Employee(name: "Sterling Archer", vacationRemaing: 14)
-archer.takeVacation(days: 5)
+archer.takeVacation(outside:5)
 
 print(archer.vacationRemaing)
 
@@ -63,15 +64,17 @@ struct EmployeeThree {
         }
     }
 }
-var rachel = EmployeeThree(name: "Rache Sterlings", vacationAllocated: 14, vacationTaken: 0)
+var rachel = EmployeeThree(name: "Rachel Sterlings", vacationAllocated: 14, vacationTaken: 0)
 rachel.vacationTaken += 4
-print(rachel.vacationAllocated)
+print("rachel vacation \(rachel.vacationRemaning) ")
+
 
 rachel.vacationRemaning = 1
 print(rachel.vacationAllocated)
 print(rachel.vacationRemaning)
 
 struct Game {
+    
     var score = 0 {
         didSet {
             print("The score is now \(score)!")
@@ -85,7 +88,7 @@ game.score += 10
 game.score -= 3
 
 struct App {
-    var contacts = [String]() {
+    var contacts = [String]() { // [String]() : Array with String
         willSet {
             print("Current value is \(contacts).")
             print("New value will be \(newValue).")
@@ -95,6 +98,7 @@ struct App {
             print("There are now \(contacts.count) contacts.")
             print("Old value was \(oldValue).")
         }
+        
     }
 }
 
